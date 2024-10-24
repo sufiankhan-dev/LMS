@@ -1,100 +1,102 @@
-"use client";
-
+import React from "react";
 import Link from "next/link";
-import React, { useState } from "react";
+import { Search, ShoppingCart, ChevronDown, Menu } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Search, Menu, X } from "lucide-react";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function Navbar() {
   return (
-    <header className="bg-blue-600 text-white shadow-lg">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-bold">
-          LearnHub
-        </Link>
-        <div className="hidden md:flex items-center space-x-4">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost">Courses</Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuItem>
-                <Link href="/courses">Short-term Courses</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="/long-courses">Long-term Courses</Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <Button variant="ghost">About</Button>
-          <Button variant="ghost">Contact</Button>
-          <form className="relative">
+    <nav className="border-b">
+      <div className="flex items-center justify-between p-4 max-w-7xl mx-auto">
+        <div className="flex items-center  space-x-2 w-full">
+          {/* Logo */}
+          <Link href="/" className="flex items-center space-x-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-6 w-6"
+            >
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+              <path d="M6 12v5c3 3 9 3 12 0v-5" />
+            </svg>
+            <span className="font-bold text-xl">LearnHub</span>
+          </Link>
+
+          {/* Categories Dropdown - Hidden on mobile */}
+          <div className="hidden md:block">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost">
+                  Categories <ChevronDown className="ml-1 h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>Web Development</DropdownMenuItem>
+                <DropdownMenuItem>Data Science</DropdownMenuItem>
+                <DropdownMenuItem>Mobile Development</DropdownMenuItem>
+                <DropdownMenuItem>Cloud Computing</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+
+          {/* Search Bar */}
+          <div className="hidden md:flex items-center flex-1 max-w-md mx-4">
             <Input
               type="search"
-              placeholder="Search courses..."
-              className="pl-8 pr-2 py-1 rounded-full bg-white text-gray-600 placeholder-blue-200 focus:outline-none"
+              placeholder="Search for courses"
+              className="w-full"
             />
-            <Search
-              className="absolute left-2 top-1/2 transform -translate-y-1/2 text-black"
-              size={18}
-            />
-          </form>
+            <Button type="submit" size="icon" className="ml-2">
+              <Search className="h-4 w-4" />
+              <span className="sr-only">Search</span>
+            </Button>
+          </div>
         </div>
-        <div className="md:hidden">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X /> : <Menu />}
-          </Button>
-        </div>
-      </div>
-      {isMenuOpen && (
-        <div className="md:hidden bg-blue-500 p-4">
-          <nav className="flex flex-col space-y-2">
-            <Link
-              href="/courses/short-term"
-              className="text-white hover:text-blue-200"
-            >
-              Short-term Courses
-            </Link>
-            <Link
-              href="/courses/long-term"
-              className="text-white hover:text-blue-200"
-            >
-              Long-term Courses
-            </Link>
-            <Link href="/about" className="text-white hover:text-blue-200">
-              About
-            </Link>
-            <Link href="/contact" className="text-white hover:text-blue-200">
-              Contact
-            </Link>
-            <form className="relative mt-2">
-              <Input
-                type="search"
-                placeholder="Search courses..."
-                className="w-full pl-8 pr-2 py-1 rounded-full bg-blue-400 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-300"
-              />
-              <Search
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 text-blue-200"
-                size={18}
-              />
-            </form>
-          </nav>
-        </div>
-      )}
-    </header>
-  );
-};
+        <div className="flex items-center justify-center space-x-2">
+          {/* Teach on Platform - Hidden on mobile */}
+          <div className="hidden md:block">
+            <Button variant="ghost">Teach on LearnHub</Button>
+          </div>
 
-export default Navbar;
+          {/* User Menu */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon" className="rounded-full">
+                <Avatar>
+                  <AvatarImage src="/image.png" alt="User" />
+                  <AvatarFallback>U</AvatarFallback>
+                </Avatar>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem>My Learning</DropdownMenuItem>
+              <DropdownMenuItem>My Cart</DropdownMenuItem>
+              <DropdownMenuItem>Wishlist</DropdownMenuItem>
+              <DropdownMenuItem>Account Settings</DropdownMenuItem>
+              <DropdownMenuItem>Log Out</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <Button variant="ghost" size="icon" className="md:hidden">
+          <Menu className="h-5 w-5" />
+          <span className="sr-only">Menu</span>
+        </Button>
+      </div>
+    </nav>
+  );
+}
