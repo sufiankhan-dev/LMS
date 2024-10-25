@@ -19,7 +19,7 @@ import {
 
 export default function OldSchoolCourseViewWithVideos() {
   const [activeTab, setActiveTab] = useState("syllabus");
-  const [currentVideo, setCurrentVideo] = useState(null);
+  const [currentVideo, setCurrentVideo] = useState<any>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const course = {

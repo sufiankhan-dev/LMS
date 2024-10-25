@@ -1,6 +1,6 @@
 "use client";
 import { Search } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 import React, { useState } from "react";
@@ -37,6 +37,7 @@ import {
   pricingPlans,
   testimonials,
 } from "@/data/constants";
+import Link from "next/link";
 
 export default function LandingPage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -219,7 +220,7 @@ export default function LandingPage() {
               ))}
           </div>
           <div className="text-center mt-12">
-            <Button size="lg">View All Courses</Button>
+            <Link href={"/courses"}  className={buttonVariants()}>View All Courses</Link>
           </div>
         </section>
 
