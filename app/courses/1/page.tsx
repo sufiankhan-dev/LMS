@@ -46,10 +46,17 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 
+interface Video {
+  id: number;
+  title: string;
+  duration: string;
+  url: string;
+}
+
 export default function ModernLuxuryCourseView() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("syllabus");
-  const [currentVideo, setCurrentVideo] = useState(null);
+  const [currentVideo, setCurrentVideo] = useState<Video | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const course = {

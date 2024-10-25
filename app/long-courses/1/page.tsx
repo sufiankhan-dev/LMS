@@ -17,9 +17,16 @@ import {
   FastForward,
 } from "lucide-react";
 
+interface Video {
+  id: number;
+  title: string;
+  duration: string;
+  url: string;
+}
+
 export default function OldSchoolCourseViewWithVideos() {
   const [activeTab, setActiveTab] = useState("syllabus");
-  const [currentVideo, setCurrentVideo] = useState(null);
+  const [currentVideo, setCurrentVideo] = useState<Video | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const course = {

@@ -390,8 +390,12 @@ export default function LandingPage() {
               <Accordion type="single" collapsible className="w-full">
                 {faqItems.map((item, index) => (
                   <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger>{item.question}</AccordionTrigger>
-                    <AccordionContent>{item.answer}</AccordionContent>
+                    <AccordionTrigger className="outline-none border-none">
+                      {item.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-start">
+                      {item.answer}
+                    </AccordionContent>
                   </AccordionItem>
                 ))}
               </Accordion>
