@@ -44,10 +44,38 @@ export default function Navbar() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuItem>Web Development</DropdownMenuItem>
-                <DropdownMenuItem>Data Science</DropdownMenuItem>
-                <DropdownMenuItem>Mobile Development</DropdownMenuItem>
-                <DropdownMenuItem>Cloud Computing</DropdownMenuItem>
+                <DropdownMenuItem>
+                  {" "}
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost">
+                        Long Courses <ChevronDown className="ml-1 h-4 w-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuItem>Web Development</DropdownMenuItem>
+                      <DropdownMenuItem>Data Science</DropdownMenuItem>
+                      <DropdownMenuItem>Mobile Development</DropdownMenuItem>
+                      <DropdownMenuItem>Cloud Computing</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  {" "}
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost">
+                        Short Courses <ChevronDown className="ml-1 h-4 w-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuItem>Web Development</DropdownMenuItem>
+                      <DropdownMenuItem>Data Science</DropdownMenuItem>
+                      <DropdownMenuItem>Mobile Development</DropdownMenuItem>
+                      <DropdownMenuItem>Cloud Computing</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>

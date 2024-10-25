@@ -1,89 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { Book, ChevronRight, ChevronDown, Search } from "lucide-react";
+import { Book, Search } from "lucide-react";
+import { longCourcesCategories, longCourses } from "@/data/constants";
+import Link from "next/link";
 
 export default function OldSchoolCoursesPage() {
   const [activeCategory, setActiveCategory] = useState("All Courses");
   const [searchTerm, setSearchTerm] = useState("");
 
-  const categories = [
-    "All Courses",
-    "Computer Science",
-    "Mathematics",
-    "Literature",
-    "History",
-    "Science",
-  ];
-
-  const courses = [
-    {
-      id: 1,
-      code: "CS101",
-      name: "Introduction to Programming",
-      instructor: "Dr. John Doe",
-      credits: 3,
-      enrolled: 150,
-    },
-    {
-      id: 2,
-      code: "MATH201",
-      name: "Calculus I",
-      instructor: "Prof. Jane Smith",
-      credits: 4,
-      enrolled: 120,
-    },
-    {
-      id: 3,
-      code: "LIT105",
-      name: "World Literature",
-      instructor: "Dr. Emily Brown",
-      credits: 3,
-      enrolled: 80,
-    },
-    {
-      id: 4,
-      code: "HIST202",
-      name: "Modern World History",
-      instructor: "Prof. Michael Johnson",
-      credits: 3,
-      enrolled: 100,
-    },
-    {
-      id: 5,
-      code: "BIO101",
-      name: "Introduction to Biology",
-      instructor: "Dr. Sarah Lee",
-      credits: 4,
-      enrolled: 130,
-    },
-    {
-      id: 6,
-      code: "PHYS201",
-      name: "Physics for Engineers",
-      instructor: "Prof. Robert Chen",
-      credits: 4,
-      enrolled: 90,
-    },
-    {
-      id: 7,
-      code: "CS202",
-      name: "Data Structures and Algorithms",
-      instructor: "Dr. Alice Wang",
-      credits: 3,
-      enrolled: 110,
-    },
-    {
-      id: 8,
-      code: "CHEM101",
-      name: "General Chemistry",
-      instructor: "Prof. David Miller",
-      credits: 4,
-      enrolled: 140,
-    },
-  ];
-
-  const filteredCourses = courses.filter(
+  const filteredCourses = longCourses.filter(
     (course) =>
       course.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       course.code.toLowerCase().includes(searchTerm.toLowerCase())
@@ -100,7 +26,7 @@ export default function OldSchoolCoursesPage() {
             </h1>
           </div>
           <ul>
-            {categories.map((category) => (
+            {longCourcesCategories.map((category) => (
               <li key={category} className="mb-2">
                 <button
                   onClick={() => setActiveCategory(category)}
@@ -171,7 +97,9 @@ export default function OldSchoolCoursesPage() {
                       {course.code}
                     </td>
                     <td className="border border-gray-300 p-2">
-                      {course.name}
+                      <Link className="w-full" href={`/courses/long-courses/1`}>
+                        {course.name}
+                      </Link>
                     </td>
                     <td className="border border-gray-300 p-2">
                       {course.instructor}

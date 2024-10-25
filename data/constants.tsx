@@ -1,23 +1,87 @@
-import {
-  ChevronRight,
-  Star,
-  Users,
-  Book,
-  Trophy,
-  ArrowRight,
-  Check,
-  Play,
-  Pause,
-  CheckCircle,
-  BookOpen,
-} from "lucide-react";
-export const navItems = [
+import { Star, Users, Book, Trophy, ArrowRight, Check } from "lucide-react";
+// Type for Navigation Items
+export interface NavItem {
+  name: string;
+  link: string;
+}
+
+// Type for Categories
+export type Category = string;
+
+// Type for Feature Item
+export interface Feature {
+  icon: any;
+  title: string;
+  description: string;
+}
+
+// Type for Testimonial
+export interface Testimonial {
+  name: string;
+  role: string;
+  content: string;
+  image: string;
+}
+
+// Type for Pricing Plan
+export interface PricingPlan {
+  name: string;
+  price: string;
+  features: string[];
+  popular: boolean;
+}
+
+// Type for Partner
+export interface Partner {
+  name: string;
+  logo: string;
+}
+
+// Type for FAQ Item
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+// Type for Course
+export interface Course {
+  title: string;
+  category: string;
+  students: number;
+  rating: number;
+  image: string;
+}
+
+// Type for Courses on the Courses Page
+export interface CourseDetail extends Course {
+  id: number;
+  instructor: string;
+  subcategory: string;
+  level: string;
+  price: number;
+  duration: string;
+  skills: string[];
+  progress: number;
+  enrolled: boolean;
+}
+
+export type LongCourse = {
+  id: number;
+  code: string;
+  name: string;
+  instructor: string;
+  credits: number;
+  enrolled: number;
+};
+// Using the types with data
+
+export const navItems: NavItem[] = [
   { name: "Pricing", link: "/pricing" },
   { name: "About Us", link: "/about" },
   { name: "Contact Us", link: "/contact" },
 ];
 
-export const categories1 = [
+export const categories1: Category[] = [
   "Programming",
   "Data Science",
   "Business",
@@ -26,7 +90,7 @@ export const categories1 = [
   "...",
 ];
 
-export const categories = [
+export const categories: Category[] = [
   "All",
   "Development",
   "Business",
@@ -35,7 +99,7 @@ export const categories = [
   "Personal Development",
 ];
 
-export const features = [
+export const features: Feature[] = [
   {
     icon: Users,
     title: "Expert Instructors",
@@ -69,7 +133,7 @@ export const features = [
   },
 ];
 
-export const testimonials = [
+export const testimonials: Testimonial[] = [
   {
     name: "Alex Johnson",
     role: "Software Developer",
@@ -100,7 +164,7 @@ export const testimonials = [
   },
 ];
 
-export const pricingPlans = [
+export const pricingPlans: PricingPlan[] = [
   {
     name: "Basic",
     price: "$9.99",
@@ -135,7 +199,7 @@ export const pricingPlans = [
   },
 ];
 
-export const partners = [
+export const partners: Partner[] = [
   {
     name: "Google",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original-wordmark.svg",
@@ -154,7 +218,7 @@ export const partners = [
   },
 ];
 
-export const faqItems = [
+export const faqItems: FAQItem[] = [
   {
     question: "How do I get started?",
     answer:
@@ -177,7 +241,83 @@ export const faqItems = [
   },
 ];
 
-export const courses = [
+export const longCourcesCategories: Category[] = [
+  "All Courses",
+  "Computer Science",
+  "Mathematics",
+  "Literature",
+  "History",
+  "Science",
+];
+
+export const longCourses: LongCourse[] = [
+  {
+    id: 1,
+    code: "CS101",
+    name: "Introduction to Programming",
+    instructor: "Dr. John Doe",
+    credits: 3,
+    enrolled: 150,
+  },
+  {
+    id: 2,
+    code: "MATH201",
+    name: "Calculus I",
+    instructor: "Prof. Jane Smith",
+    credits: 4,
+    enrolled: 120,
+  },
+  {
+    id: 3,
+    code: "LIT105",
+    name: "World Literature",
+    instructor: "Dr. Emily Brown",
+    credits: 3,
+    enrolled: 80,
+  },
+  {
+    id: 4,
+    code: "HIST202",
+    name: "Modern World History",
+    instructor: "Prof. Michael Johnson",
+    credits: 3,
+    enrolled: 100,
+  },
+  {
+    id: 5,
+    code: "BIO101",
+    name: "Introduction to Biology",
+    instructor: "Dr. Sarah Lee",
+    credits: 4,
+    enrolled: 130,
+  },
+  {
+    id: 6,
+    code: "PHYS201",
+    name: "Physics for Engineers",
+    instructor: "Prof. Robert Chen",
+    credits: 4,
+    enrolled: 90,
+  },
+  {
+    id: 7,
+    code: "CS202",
+    name: "Data Structures and Algorithms",
+    instructor: "Dr. Alice Wang",
+    credits: 3,
+    enrolled: 110,
+  },
+  {
+    id: 8,
+    code: "CHEM101",
+    name: "General Chemistry",
+    instructor: "Prof. David Miller",
+    credits: 4,
+    enrolled: 140,
+  },
+];
+
+export const courses: Course[] = [
   {
     title: "Web Development Bootcamp",
     category: "Development",
@@ -228,7 +368,7 @@ export const courses = [
   },
 ];
 
-export const coursesPage = [
+export const coursesPage: CourseDetail[] = [
   {
     id: 1,
     title: "Advanced Web Development Bootcamp",
@@ -240,7 +380,8 @@ export const coursesPage = [
     duration: "12 weeks",
     rating: 4.8,
     students: 3500,
-    image: "https://cdn.dribbble.com/users/33073/screenshots/13948086/media/115a6a398820dea51ac704393cea1e9d.png?resize=400x0",
+    image:
+      "https://cdn.dribbble.com/users/33073/screenshots/13948086/media/115a6a398820dea51ac704393cea1e9d.png?resize=400x0",
     skills: ["React", "Node.js", "GraphQL"],
     progress: 75,
     enrolled: true,
@@ -256,7 +397,8 @@ export const coursesPage = [
     duration: "10 weeks",
     rating: 4.9,
     students: 2800,
-    image: "https://365datascience.com/resources/courses/q21akqudbj-the-machine-learning-process-a-z-thumbnail-for-promo.webp",
+    image:
+      "https://365datascience.com/resources/courses/q21akqudbj-the-machine-learning-process-a-z-thumbnail-for-promo.webp",
     skills: ["Python", "TensorFlow", "Scikit-learn"],
     progress: 30,
     enrolled: true,
@@ -272,7 +414,8 @@ export const coursesPage = [
     duration: "8 weeks",
     rating: 4.5,
     students: 5000,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5ZyWVPqX5kNzziqQj1VcLUGdiUHvSDRizgw&s",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5ZyWVPqX5kNzziqQj1VcLUGdiUHvSDRizgw&s",
     skills: ["SEO", "Social Media", "Content Marketing"],
     progress: 0,
     enrolled: false,
@@ -288,7 +431,8 @@ export const coursesPage = [
     duration: "6 weeks",
     rating: 4.7,
     students: 1800,
-    image: "https://img.freepik.com/free-psd/education-template-design_23-2151095367.jpg?semt=ais_hybrid",
+    image:
+      "https://img.freepik.com/free-psd/education-template-design_23-2151095367.jpg?semt=ais_hybrid",
     skills: ["Figma", "User Research", "Prototyping"],
     progress: 0,
     enrolled: false,
@@ -304,7 +448,8 @@ export const coursesPage = [
     duration: "8 weeks",
     rating: 4.6,
     students: 4200,
-    image: "https://media.geeksforgeeks.org/wp-content/uploads/20230510174745/Data-Analysis-with-Python.webp",
+    image:
+      "https://media.geeksforgeeks.org/wp-content/uploads/20230510174745/Data-Analysis-with-Python.webp",
     skills: ["Python", "Pandas", "Matplotlib"],
     progress: 50,
     enrolled: true,
@@ -320,7 +465,8 @@ export const coursesPage = [
     duration: "10 weeks",
     rating: 4.8,
     students: 2100,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBUDvfZmbED12pFBLG5el8sasaTgplysEP4A&s",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBUDvfZmbED12pFBLG5el8sasaTgplysEP4A&s",
     skills: ["React Native", "JavaScript", "Mobile UI"],
     progress: 0,
     enrolled: false,
